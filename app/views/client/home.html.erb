@@ -1,0 +1,17 @@
+<%= flash[:alert] if flash[:alert]%>
+<%= flash[:notice] if flash[:notice]%>
+
+<h1>Client#home</h1>
+<p>Find me in app/views/client/home.html.erb</p>
+
+<%= form_with url: root_path, method: :get do |form| %>
+    <%= form.text_field :codigo_rastreio %>
+    <%= form.submit %>
+<% end %>
+
+
+
+<%if @order%>
+    Batata
+    <%= @order %>
+<%end%>

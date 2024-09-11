@@ -1,0 +1,9 @@
+<%= flash[:alert] if flash[:alert]%>
+<%= flash[:notice] if flash[:notice]%>
+
+<h1>Client#order</h1>
+<p>Find me in app/views/client/home.html.erb</p>
+
+<%if @order%>
+    <% @order %>
+<%end%>
