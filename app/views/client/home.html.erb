@@ -1,17 +1,20 @@
-<%= flash[:alert] if flash[:alert]%>
-<%= flash[:notice] if flash[:notice]%>
-
-<h1>Client#home</h1>
-<p>Find me in app/views/client/home.html.erb</p>
-
-<%= form_with url: root_path, method: :get do |form| %>
-    <%= form.text_field :codigo_rastreio %>
-    <%= form.submit %>
-<% end %>
 
 
+<div class="container">
+    <%= flash[:alert] if flash[:alert]%>
+    <%= flash[:notice] if flash[:notice]%>
+    <h1>Hermes</h1>
+    <h2>Consulta de Pedidos</h2>
+    <%= form_with url: root_path, method: :get do |form| %>
+        <%= form.label :codigo_rastreio, "Código de Rastreio", class: "form-label"%>
+        </br>
+        <%= form.text_field :codigo_rastreio %>
+        </br>
+        <%= form.submit "Consultar", class:"btn btn-success"%>
+    <% end %>
+    <%if @order%>
+        <%= @order %>
+    <%end%>
+</div>
 
-<%if @order%>
-    Batata
-    <%= @order %>
-<%end%>
+
