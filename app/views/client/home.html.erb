@@ -1,0 +1,125 @@
+<div class="container mt-5">
+    <!-- Mensagens de alerta 
+    <% if flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= flash[:alert] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% end %>
+    <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= flash[:notice] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <% end %> -->
+
+    <% if @order %>
+        <div class="alert alert-success mt-5" role="alert">
+            Pedido encontrado.
+        </div>
+    <% elsif flash[:alert] %>
+        <div class="alert alert-danger mt-5" role="alert">
+            Pedido não encontrado.
+        </div>
+    <% end %> 
+
+    <!-- Título principal -->
+    <div class="text-center mb-4">
+        <h1 class="display-4 text-primary">Hermes</h1>
+        <p class="lead">Rastreamento de Pedidos</p>
+    </div>
+
+    <!-- Formulário de consulta -->
+    <div class="card p-4 shadow-sm">
+    <%= form_with url: root_path, method: :get do |form| %>
+        <div class="mb-3">
+            <%= form.label :codigo_rastreio, "Código de Rastreio", class: "form-label" %>
+            <div class="d-flex">
+                <%= form.text_field :codigo_rastreio, class: "form-control me-2", placeholder: "Digite o código de rastreamento" %>
+                <%= form.submit "Consultar", class: "btn btn-success" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<% if @order.present? %>
+  <h3 class="titulo">Resultado da Consulta</h3>
+  <table class="table table-bordered table-custom">
+    <thead class="thead-light">
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Danfe</td>
+        <td><%= @order["pedido"]["danfe"] %></td>
+      </tr>
+      <tr>
+        <td>NFe</td>
+        <td><%= @order["pedido"]["nfe"] %></td>
+      </tr>
+      <tr>
+        <td>Endereço de Entrega</td>
+        <td><%= @order["pedido"]["endereco_entrega"] %></td>
+      </tr>
+      <tr>
+        <td>Status do Pedido</td>
+        <td><%= @order["pedido"]["status_pedido"] %></td>
+      </tr>
+      <tr>
+        <td>Código de Rastreio</td>
+        <td><%= @order["pedido"]["codigo_rastreio"] %></td>
+      </tr>
+      <tr>
+        <td>Data de Fornecimento</td>
+        <td><%= @order["pedido"]["data_fornecimento"] %></td>
+      </tr>
+      <tr>
+        <td>Fornecedor</td>
+        <td><%= @order["pedido"]["supplier_id"] %></td>
+      </tr>
+      <tr>
+        <td>Data de Criação</td>
+        <td><%= @order["pedido"]["created_at"] %></td>
+      </tr>
+      <tr>
+        <td>Data de Atualização</td>
+        <td><%= @order["pedido"]["updated_at"] %></td>
+      </tr>
+      </tbody>
+  </table>
+
+  <!-- Histórico -->
+    <h3 class="titulo">Histórico</h3>
+    <table class="table table-bordered table-custom historico-table">
+      <thead class="thead-light">
+        <tr>
+          <th>Campo</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order["historico"].each do |historico| %>
+          <tr>
+            <td>Origem</td>
+            <td><%= historico["origem"] %></td>
+          </tr>
+          <tr>
+            <td>Destino</td>
+            <td><%= historico["destino"] %></td>
+          </tr>
+          <tr>
+            <td>Data de Despacho</td>
+            <td><%= historico["data_despache"] %></td>
+          </tr>
+          <tr>
+            <td>Data de Entrega</td>
+            <td><%= historico["data_entrega"] || "Não disponível" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
