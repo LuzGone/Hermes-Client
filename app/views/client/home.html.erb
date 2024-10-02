@@ -74,19 +74,7 @@
       </tr>
       <tr>
         <td>Data de Fornecimento</td>
-        <td><%= @order["pedido"]["data_fornecimento"] %></td>
-      </tr>
-      <tr>
-        <td>Fornecedor</td>
-        <td><%= @order["pedido"]["supplier_id"] %></td>
-      </tr>
-      <tr>
-        <td>Data de Criação</td>
-        <td><%= @order["pedido"]["created_at"] %></td>
-      </tr>
-      <tr>
-        <td>Data de Atualização</td>
-        <td><%= @order["pedido"]["updated_at"] %></td>
+        <td><%= @order["pedido"]["data_fornecimento"].strftime("%d/%m/%Y %H:%M") %></td>
       </tr>
       </tbody>
   </table>
@@ -112,11 +100,15 @@
           </tr>
           <tr>
             <td>Data de Despacho</td>
-            <td><%= historico["data_despache"] %></td>
+            <td><%= Time.parse(historico["data_despache"]).strftime("%d/%m/%Y %H:%M") %></td>
           </tr>
           <tr>
             <td>Data de Entrega</td>
-            <td><%= historico["data_entrega"] || "Não disponível" %></td>
+            <td><%= Time.parse(historico["data_entrega"]).strftime("%d/%m/%Y %H:%M") || "Não disponível" %></td>
+          </tr>
+          <tr>
+            <td>------------------</td>
+            <td>------------------</td>
           </tr>
         <% end %>
       </tbody>
