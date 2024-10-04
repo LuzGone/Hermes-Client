@@ -28,3 +28,5 @@ $ rails s -p 3001
 * Segue abaixo uma tela da aplicação funcionando
 
 ![Imagem da aplicação hermes funcionando](/hermes-client.png)
+
+* Para fazer uma consulta basta copiar o código de rastreio de algum pedido presente na aplicação do Management e colar na barra de rastreio
