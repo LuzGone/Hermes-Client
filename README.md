@@ -1,24 +1,30 @@
-# README
+# Hermes - Sistema de Gestão de Entregas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+OBS: Esse projeto necessita de um outro para acessar a parte do cliente que está presente no seguinte repositório:
 
-Things you may want to cover:
+[Hermes-Management](https://github.com/luzgone/Hermes-Management)
 
-* Ruby version
+* Ruby version 3.3.4
 
-* System dependencies
+* Dependencies
+  * [Hermes-Management](https://github.com/luzgone/Hermes-Management)
 
-* Configuration
+## Passo a Passo
 
-* Database creation
+* Instalar as gems necessárias
 
-* Database initialization
+```bash
+$ bundle install
+```
 
-* How to run the test suite
+### LEMBRE-SE QUE ESSA APLICAÇÃO PARA FUNCIONAR PRECISA QUE A HERMES-MANAGEMENT ESTEJA RODANDO
 
-* Services (job queues, cache servers, search engines, etc.)
+* Iniciar essa aplicação
 
-* Deployment instructions
+```bash
+$ rails s -p 3001
+```
 
-* ...
+* Segue abaixo uma tela da aplicação funcionando
+
+![Imagem da aplicação hermes funcionando](/hermes-client.png)
